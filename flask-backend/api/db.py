@@ -4,7 +4,7 @@ import pymysql
 MYSQL_HOST = config('MYSQL_HOST', default='localhost')
 MYSQL_USER = config('MYSQL_USER', default='root')
 MYSQL_PASSWORD = config('MYSQL_PASSWORD', default='rootroot')
-MYSQL_DATABASE = config('MYSQL_DATABASE', default='db_companies')
+MYSQL_DATABASE = config('MYSQL_DATABASE', default='db_pacientes')
 
 def get_connection():
     return pymysql.connect(
