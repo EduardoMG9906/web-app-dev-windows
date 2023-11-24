@@ -3,11 +3,11 @@ from flask import Blueprint, request, jsonify
 from flask_cors import CORS
 from model.paciente import (
     get_pacientes,
-    # get_company,
-    # create_company,
+    get_paciente,
+    create_paciente,
     # get_company_by_name,
-    # update_company,
-    # delete_company,
+    update_paciente,
+    delete_paciente,
 )
 
 bp = Blueprint('pacientes', __name__, url_prefix='/pacientes')
@@ -18,28 +18,44 @@ def list():
     retorno = get_pacientes()
     return jsonify(retorno)
 
-# @bp.route('/<int:company_id>', methods=['GET'])
-# def get(company_id):
-#     return jsonify(get_company(company_id))
+@bp.route('/<int:paciente_id>', methods=['GET'])
+def get(paciente_id):
+    return jsonify(get_paciente(paciente_id))
 
-# @bp.route('/by_name/<company_name>', methods=['GET'])
-# def get_by_name(company_name):
-#     return jsonify(get_company_by_name(company_name))
 
-# @bp.route('/', methods=['POST'])
-# def create():
-#     data = request.get_json()
-#     name = data['name']
-#     description = data['description']
-#     return jsonify(create_company(name, description))
+@bp.route('/', methods=['POST'])
+def create():
+    data = request.get_json()
+    tipo_id = data['tipo_id']
+    nombre = data['nombre']
+    email = data['email']
+    grupo_sanguineo = data['grupo_sanguineo']
+    genero = data['genero']
+    edad = data['edad']
+    fecha_nacimiento = data['fecha_nacimiento']
+    direccion = data['direccion']
+    celular = data['celular']
+    eps = data['eps']
+    serial_hc = data['serial_hc']
 
-# @bp.route('/<int:company_id>', methods=['PUT'])
-# def update(company_id):
-#     data = request.get_json()
-#     name = data['name']
-#     description = data['description']
-#     return jsonify(update_company(name, description, company_id))
+    return jsonify(create_paciente(tipo_id, nombre, email, grupo_sanguineo, genero, edad, fecha_nacimiento, direccion, celular, eps, serial_hc))
 
-# @bp.route('/<int:company_id>', methods=['DELETE'])
-# def delete(company_id):
-#     return jsonify(delete_company(company_id))
+@bp.route('/<int:paciente_id>', methods=['PUT'])
+def update(paciente_id):
+    data = request.get_json()
+    tipo_id = data['tipo_id']
+    nombre = data['nombre']
+    email = data['email']
+    grupo_sanguineo = data['grupo_sanguineo']
+    genero = data['genero']
+    edad = data['edad']
+    fecha_nacimiento = data['fecha_nacimiento']
+    direccion = data['direccion']
+    celular = data['celular']
+    eps = data['eps']
+    serial_hc = data['serial_hc']
+    return jsonify(update_paciente(tipo_id, nombre, email, grupo_sanguineo, genero, edad, fecha_nacimiento, direccion, celular, eps, serial_hc, paciente_id))
+
+@bp.route('/<int:paciente_id>', methods=['DELETE'])
+def delete(paciente_id):
+    return jsonify(delete_paciente(paciente_id))
