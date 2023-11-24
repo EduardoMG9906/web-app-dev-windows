@@ -13,8 +13,8 @@ services:
             - ./api/:/opt/api/
         environment:
             MYSQL_HOST: 172.18.0.3
-            MYSQL_DATABASE: companies
-            MYSQL_USER: companies
+            MYSQL_DATABASE: pacientes
+            MYSQL_USER: root
             MYSQL_PASSWORD: password
             APP_ENV: DEV
         stdin_open: true

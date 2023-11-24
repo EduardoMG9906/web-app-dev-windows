@@ -12,7 +12,7 @@ services:
         volumes:
             - ./examples/:/opt/examples/
         environment:
-            FLASK_APP: hello.py
+            FLASK_APP: poema.py
         stdin_open: true
         tty: true
         expose:
